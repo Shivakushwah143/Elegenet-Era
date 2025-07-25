@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react-jsx",               // 👈 Required for React 17+
+    "rootDir": "src",                 // 👈 Where your source files are
+    "outDir": "dist",                 // 👈 Where your compiled JS goes
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowJs": false,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}
