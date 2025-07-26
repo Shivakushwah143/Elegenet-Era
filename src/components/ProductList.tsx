@@ -8,7 +8,7 @@ export default function ProductList() {
     <div className="product-list">
     
       {
-        <div className="products-container flex justify-between gap-10">
+        <div className="products-container  justify-between gap-10">
           {products.map((product) => (
             <div key={product._id} className="product-card">
               <img
