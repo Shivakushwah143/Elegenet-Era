@@ -7,11 +7,11 @@ import { AuthProvider } from './context/AuthContext'
 import { BlogProvider } from './context/BlogContext'
 createRoot(document.getElementById('root')!).render(
 
-  <BrowserRouter>
     <BlogProvider>
+  <BrowserRouter>
       <AuthProvider>
         <App />
       </AuthProvider>
-    </BlogProvider>
   </BrowserRouter>
+    </BlogProvider>
 )

@@ -1,54 +1,93 @@
-import Card from '../components/ui/Card';
-
-// export function ProductCard() {
+// import Card from '../components/ui/Card';
+// interface ProductCardProps {
+//   imageUrl: string;
+//   price: string;
+//   title: string;
+//   imageClassName?: string;
+// }
+// export function ProductCard({
+//   imageUrl,
+//   price,
+//   title,
+//   imageClassName = "h-62 w-72 ",
+// }: ProductCardProps) {
 //   return (
-//     <Card className=" w-76 bg-yellow-400">
+//     <Card className={`w-76 bg-yellow-400 `}>
 
-//       <Card.Content className=' items-center justify-center '>
+//       <Card.Content className='items-center justify-center'>
+//         <div className='object-contain aspect-square'>
+//           <img
+//             src={imageUrl}
+//             alt="Product"
+//             className={imageClassName}
+//           />
+//           <Card.Title className='mt-2 text-red-700 font-semibold'>{title}</Card.Title>
+//           <h2>{price}</h2>
 
-//         <div className='object-contain  spect-square  '>
-//           <img src="https://plus.unsplash.com/premium_photo-1687653092405-66ec72460345?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDh8fHxlbnwwfHx8fHw%3D" alt="Headphones" className="h-62 w-72" />
-//           <div className='mt-2 text-red-700 font-semibold'>
-//             <h2 className=''>UP TO 70% OFF</h2>
-//             <button className=''>explore more</button>
-//           </div>
+
 //         </div>
 //       </Card.Content>
-
 //     </Card>
 //   );
 // }
 
-// import Card from '../components/ui/Card';
+import Card from '../components/ui/Card';
+import Button from '../components/ui/Button'; 
 
 interface ProductCardProps {
   imageUrl: string;
-  discountText: string;
-  buttonText: string;
+  price: string;
+  title: string;
   imageClassName?: string;
-  discountTextClassName?: string;
-  buttonClassName?: string;
+  onEdit?: () => void;
+  onDelete?: () => void;
+  productId:string
 }
+
 export function ProductCard({
   imageUrl,
-  discountText ,
-  buttonText ,    
+  price,
+  title,
   imageClassName = "h-62 w-72",
+  onEdit,
+  onDelete,
 }: ProductCardProps) {
   return (
-    <Card className={`w-76 bg-yellow-400 `}>
-  
-      <Card.Content className='items-center justify-center'>
-        <div className='object-contain aspect-square'>
-          <img 
-            src={imageUrl} 
-            alt="Product" 
-            className={imageClassName} 
+    <Card className="w-76 bg-yellow-400 relative"> {/* Added relative for positioning */}
+      <Card.Content className="items-center justify-center">
+        <div className="object-contain aspect-square">
+          <img
+            src={imageUrl}
+            alt="Product"
+            className={imageClassName}
           />
-          <Card.Title className='mt-2 text-red-700 font-semibold'>{discountText}</Card.Title>
-           <button >
-              {buttonText}
-            </button>
+          <Card.Title className="mt-2 text-red-700 font-semibold">{title}</Card.Title>
+          <h2 className="text-lg font-bold">{price}</h2>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="mt-4 flex gap-2 justify-center">
+          {onEdit && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={onEdit}
+              className="bg-white hover:bg-gray-100"
+            >
+              Edit
+            </Button>
+          )}
+          {onDelete && (
+            <Button
+              variant="danger"
+              size="sm"
+              onClick={onDelete}
+              className="hover:bg-red-700"
+              
+            >
+              Delete
+            </Button>
+          )}
         </div>
       </Card.Content>
     </Card>

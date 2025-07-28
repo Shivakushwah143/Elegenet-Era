@@ -1,28 +1,28 @@
 
-import { useBlog } from '../context/BlogContext';
+// import { useBlog } from '../context/BlogContext';
 
-export default function ProductList() {
-  const { products, } = useBlog();
+// export default function ProductList() {
+//   const { products, } = useBlog();
+//   console.log(products)
+//   return (
+//     <div className="product-list">
 
-  return (
-    <div className="product-list">
-    
-      {
-        <div className="products-container  justify-between gap-10">
-          {products.map((product) => (
-            <div key={product._id} className="product-card">
-              <img
-                src={product.image}
-                alt={product.title}
-                className="h-48 w-48 "
-              />
-              <h3>{product.title}</h3>
-              <p className="description">{product.description}</p>
+//       {
+//         <div className="products-container  justify-between gap-10">
+//           {products.map((product) => (
+//             <div key={product._id} className="product-card">
+//               <img
+//                 src={product.image}
+//                 alt={product.title}
+//                 className="h-48 w-48 "
+//               />
+//               <h3>{product.title}</h3>
+//               <p className="description">{product.description}</p>
 
-            </div>
-          ))}
-        </div>
-      }
-    </div>
-  );
-}
+//             </div>
+//           ))}
+//         </div>
+//       }
+//     </div>
+//   );
+// }

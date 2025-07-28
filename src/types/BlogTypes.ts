@@ -12,10 +12,12 @@
  export type BlogContextType = {
   products: Product[];
   loading: boolean;
+   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  fetchProducts?: () => Promise<void>
 };
 
 export const defaultBlogContext: BlogContextType = {
   products: [],
   loading: false,
-
+ 
 };

@@ -7,16 +7,18 @@ const BlogContext = createContext<BlogContextType>(defaultBlogContext);
 export const BlogProvider = ({ children }: { children: React.ReactNode }) => {
 
   const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
 
+// http://localhost:5000/api/v1/product/:productId
 
   const fetchProducts = async () => {
-    setLoading(false);
+    setLoading(true);
     try {
       const { data }: { data: any } = await axios.get(`${BACKEND_URL}/product`);
       setProducts(data.products);
       console.log(data)
+       setLoading(false);
     } catch (err) {
       console.error("Error fetching products:", err);
     }
@@ -28,37 +30,11 @@ export const BlogProvider = ({ children }: { children: React.ReactNode }) => {
 
 
   return (
-    <BlogContext.Provider value={{ products, loading }}>
+    <BlogContext.Provider value={{ products, loading ,fetchProducts,setProducts}}>
       {children}
     </BlogContext.Provider>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 export const useBlog = () => {
